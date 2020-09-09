@@ -61,10 +61,15 @@ export default function ScoreBoard() {
     setPlayers(updatedPlayers);
   }
 
+  function addPlayer(name: string) {
+    const newPlayer = { id: players.length + 1, name: name, score: 0 };
+    console.log("NEW:", newPlayer);
+  }
+
   return (
     <div>
       Scoreboard
-      <PlayerForm />
+      <PlayerForm addPlayer={addPlayer} />
       <p>
         <select
           onChange={(event) => {

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-export default function PlayerForm() {
+type TProps = {
+  addPlayer: (name: string) => void;
+};
+
+export default function PlayerForm(props: TProps) {
   const [name, setName] = useState("");
 
   return (
@@ -18,6 +22,7 @@ export default function PlayerForm() {
         <button
           onClick={() => {
             console.log("ADD PLAYER", name);
+            props.addPlayer(name);
             setName("");
           }}
         >
