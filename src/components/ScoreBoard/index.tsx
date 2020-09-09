@@ -52,19 +52,30 @@ export default function ScoreBoard() {
     setPlayers(updatedPlayers);
   }
 
+  function reset() {
+    const updatedPlayers = players.map((player) => {
+      return { ...player, score: 0 };
+    });
+
+    setPlayers(updatedPlayers);
+  }
+
   return (
     <div>
       Scoreboard
-      <select
-        onChange={(event) => {
-          setSortBy(event.target.value);
-        }}
-      >
-        <option value="nameAsc">Sort by name ASC</option>
-        <option value="nameDesc">Sort by name DESC</option>
-        <option value="scoreAsc">Sort by score ASC</option>
-        <option value="scoreDesc">Sort by score DESC</option>
-      </select>
+      <p>
+        <select
+          onChange={(event) => {
+            setSortBy(event.target.value);
+          }}
+        >
+          <option value="nameAsc">Sort by name ASC</option>
+          <option value="nameDesc">Sort by name DESC</option>
+          <option value="scoreAsc">Sort by score ASC</option>
+          <option value="scoreDesc">Sort by score DESC</option>
+        </select>
+        <button onClick={reset}>reset</button>
+      </p>
       <div>
         {sortedPlayers.map((player) => (
           <Player key={player.id} {...player} incrementScore={incrementScore} />
