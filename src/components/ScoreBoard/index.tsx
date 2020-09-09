@@ -40,8 +40,23 @@ export default function ScoreBoard() {
 
   const sortedPlayers = [...players].sort(sortingOptions[sortBy]);
 
-  function incrementScore() {
-    console.log("Geef een punt aan deze speler!");
+  function incrementScore(playerId: number) {
+    console.log("Geef een punt aan deze speler:", playerId);
+    const updatedPlayers = players.map((player) => {
+      if (player.id === playerId) {
+        return { ...player, score: player.score + 1 };
+        // return {
+        //   id: player.id,
+        //   name: player.name,
+        //   score: player.score + 1,
+        // };
+      } else {
+        return player;
+      }
+    });
+
+    console.log(updatedPlayers);
+    setPlayers(updatedPlayers);
   }
 
   return (

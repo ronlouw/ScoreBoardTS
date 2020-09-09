@@ -2,12 +2,12 @@ import React from "react";
 import { TPlayer } from "../../entities/Player";
 
 interface Props extends TPlayer {
-  incrementScore: () => void;
+  incrementScore: (playerId: number) => void;
 }
 
 export default function Player(props: Props) {
   function handleClick() {
-    props.incrementScore();
+    props.incrementScore(props.id);
   }
 
   return (
