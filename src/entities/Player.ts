@@ -3,3 +3,5 @@ export type TPlayer = {
   name: string;
   score: number;
 };
+
+export type TSortingFunction = (playerA: TPlayer, playerB: TPlayer) => number;
