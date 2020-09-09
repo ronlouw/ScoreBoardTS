@@ -64,6 +64,8 @@ export default function ScoreBoard() {
   function addPlayer(name: string) {
     const newPlayer = { id: players.length + 1, name: name, score: 0 };
     console.log("NEW:", newPlayer);
+    const updatedPlayers = [...players, newPlayer];
+    setPlayers(updatedPlayers);
   }
 
   return (
