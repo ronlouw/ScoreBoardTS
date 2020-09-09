@@ -17,5 +17,5 @@
 - [x] meegeven aan Player als prop
 - [x] knopje maken in Player
 - [x] wanneer er op geclickt wordt -> incrementScore aanroepen
-- [ ] logica schrijven om de juiste speler een punt to geven
-- [ ] setPlayers met de nieuwe state (iemand heeft een punt gekregen)
+- [x] logica schrijven om de juiste speler een punt to geven
+- [x] setPlayers met de nieuwe state (iemand heeft een punt gekregen)
