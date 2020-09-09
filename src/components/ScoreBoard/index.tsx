@@ -40,13 +40,15 @@ export default function ScoreBoard() {
 
   const sortedPlayers = [...players].sort(sortingOptions[sortBy]);
 
+  function incrementScore() {
+    console.log("Geef een punt aan deze speler!");
+  }
+
   return (
     <div>
       Scoreboard
       <select
         onChange={(event) => {
-          //   console.log(event.target); // select
-          //   console.log(event.target.value); // name of score
           setSortBy(event.target.value);
         }}
       >
