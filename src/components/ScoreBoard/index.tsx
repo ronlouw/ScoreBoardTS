@@ -2,33 +2,35 @@ import React, { useState } from "react";
 import Player from "../Player";
 import { TPlayer, TSortingFunction } from "../../entities/Player";
 
-const compareScoreAsc: TSortingFunction = (playerA, playerB) => {
+const compareScoreDesc: TSortingFunction = (playerA, playerB) => {
   return playerB.score - playerA.score;
 };
 
-const compareScoreDesc: TSortingFunction = (playerA, playerB) => {
+const compareScoreAsc: TSortingFunction = (playerA, playerB) => {
   return playerA.score - playerB.score;
 };
 
-const compareNameDesc: TSortingFunction = (playerA, playerB) => {
+const compareNameAsc: TSortingFunction = (playerA, playerB) => {
   return playerA.name.localeCompare(playerB.name);
 };
 
-const compareNameAsc: TSortingFunction = (playerA, playerB) => {
+const compareNameDesc: TSortingFunction = (playerA, playerB) => {
   return playerB.name.localeCompare(playerA.name);
 };
 
-const sortingOptions: {
+type TSortingOptions = {
   [key: string]: TSortingFunction;
-} = {
-  name: compareNameDesc,
+};
+
+const sortingOptions: TSortingOptions = {
+  nameDesc: compareNameDesc,
   nameAsc: compareNameAsc,
   scoreAsc: compareScoreAsc,
   scoreDesc: compareScoreDesc,
 };
 
 export default function ScoreBoard() {
-  const [sortBy, setSortBy] = useState("score");
+  const [sortBy, setSortBy] = useState("scoreDesc");
   const [players, setPlayers] = useState<TPlayer[]>([
     { id: 1, name: "Violeta", score: 11 },
     { id: 2, name: "Eszter", score: 14 },
@@ -48,10 +50,12 @@ export default function ScoreBoard() {
           setSortBy(event.target.value);
         }}
       >
-        <option value="name">Sort by name DESC</option>
-        <option value="scoreAsc">Sort by score ASC</option>
-        <option value="scoreDesc">Sort by score DESC</option>
         <option value="nameAsc">Sort by name ASC</option>
+        <option value="nameDesc">Sort by name DESC</option>
+        <option value="scoreAsc">Sort by score ASC</option>
+        <option value="scoreDesc" selected>
+          Sort by score DESC
+        </option>
       </select>
       <div>
         {sortedPlayers.map((player) => (
