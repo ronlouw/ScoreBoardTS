@@ -19,3 +19,19 @@
 - [x] wanneer er op geclickt wordt -> incrementScore aanroepen
 - [x] logica schrijven om de juiste speler een punt to geven
 - [x] setPlayers met de nieuwe state (iemand heeft een punt gekregen)
+
+## Feature Request: add a Player
+
+- Speler toevoegen
+- Apart component maken met een formuliertje
+- Probleem: we hebben de setter niet: setPlayers
+- Callback prop
+
+## Todo
+
+- [x] Markup, input etc.. -> JSX
+- [x] wat typt de gebruiker? wat is de input -> useState
+- [x] event listeners & handlers
+- [] callback prop maken: addPlayer
+- [] onSubmit -> callback prop addPlayer aanroepen -> naam
+- [] logica schrijven om de speler toe te voegen

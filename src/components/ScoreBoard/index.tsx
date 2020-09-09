@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Player from "../Player";
 import { TPlayer, TSortingFunction } from "../../entities/Player";
+import PlayerForm from "../PlayerForm";
 
 const compareScoreDesc: TSortingFunction = (playerA, playerB) => {
   return playerB.score - playerA.score;
@@ -63,6 +64,7 @@ export default function ScoreBoard() {
   return (
     <div>
       Scoreboard
+      <PlayerForm />
       <p>
         <select
           onChange={(event) => {
