@@ -55,13 +55,11 @@ export default function ScoreBoard() {
         <option value="nameAsc">Sort by name ASC</option>
         <option value="nameDesc">Sort by name DESC</option>
         <option value="scoreAsc">Sort by score ASC</option>
-        <option value="scoreDesc" selected>
-          Sort by score DESC
-        </option>
+        <option value="scoreDesc">Sort by score DESC</option>
       </select>
       <div>
         {sortedPlayers.map((player) => (
-          <Player key={player.id} {...player} />
+          <Player key={player.id} {...player} incrementScore={incrementScore} />
         ))}
       </div>
     </div>

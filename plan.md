@@ -14,8 +14,8 @@
 ## Todo:
 
 - [x] functie maken in Scoreboard (incrementScore)
-- [ ] meegeven aan Player als prop
-- [ ] knopje maken in Player
-- [ ] wanneer er op geclickt wordt -> incrementScore aanroepen
+- [x] meegeven aan Player als prop
+- [x] knopje maken in Player
+- [x] wanneer er op geclickt wordt -> incrementScore aanroepen
 - [ ] logica schrijven om de juiste speler een punt to geven
 - [ ] setPlayers met de nieuwe state (iemand heeft een punt gekregen)
