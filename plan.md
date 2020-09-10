@@ -38,10 +38,10 @@
 
 ## Feature Request: We want to keep track of multiple matches
 
-- [] Entity -> TTournament ->
-- [] Component -> Tournament
-- [] State in Tournament component
-- [] Verschillende scoreboard weergeven
+- [x] Entity -> TTournament, TMatch ->
+- [x] Component -> Tournament
+- [x] State in Tournament component
+- [x] Verschillende scoreboard weergeven
 - [] Callback props incrementScore & addPlayer aanpassen
 
 ```

@@ -31,45 +31,20 @@ const sortingOptions: TSortingOptions = {
   scoreDesc: compareScoreDesc,
 };
 
-interface IProps extends TMatch {}
+interface IProps extends TMatch {
+  incrementScore: (matchId: number, playerId: number) => void;
+}
 
 export default function ScoreBoard(props: IProps) {
   const [sortBy, setSortBy] = useState("scoreDesc");
-  const [players, setPlayers] = useState<TPlayer[]>([]);
+  // const [players, setPlayers] = useState<TPlayer[]>([]);
 
-  const sortedPlayers = [...players].sort(sortingOptions[sortBy]);
-
-  function incrementScore(playerId: number) {
-    const updatedPlayers = players.map((player) => {
-      if (player.id === playerId) {
-        return { ...player, score: player.score + 1 };
-      } else {
-        return player;
-      }
-    });
-
-    setPlayers(updatedPlayers);
-  }
-
-  function reset() {
-    const updatedPlayers = players.map((player) => {
-      return { ...player, score: 0 };
-    });
-
-    setPlayers(updatedPlayers);
-  }
-
-  function addPlayer(name: string) {
-    const newPlayer = { id: players.length + 1, name: name, score: 0 };
-    console.log("NEW:", newPlayer);
-    const updatedPlayers = [...players, newPlayer];
-    setPlayers(updatedPlayers);
-  }
+  const sortedPlayers = [...props.players].sort(sortingOptions[sortBy]);
 
   return (
     <div>
       Scoreboard
-      <PlayerForm addPlayer={addPlayer} />
+      {/* <PlayerForm addPlayer={addPlayer} /> */}
       <p>
         <select
           onChange={(event) => {
@@ -81,11 +56,16 @@ export default function ScoreBoard(props: IProps) {
           <option value="scoreAsc">Sort by score ASC</option>
           <option value="scoreDesc">Sort by score DESC</option>
         </select>
-        <button onClick={reset}>reset</button>
+        {/* <button onClick={reset}>reset</button> */}
       </p>
       <div>
         {sortedPlayers.map((player) => (
-          <Player key={player.id} {...player} incrementScore={incrementScore} />
+          <Player
+            matchId={props.id}
+            key={player.id}
+            {...player}
+            incrementScore={props.incrementScore}
+          />
         ))}
       </div>
     </div>
