@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Player from "../Player";
 import { TPlayer, TSortingFunction } from "../../entities/Player";
+import { TMatch } from "../../entities/Match";
 import PlayerForm from "../PlayerForm";
 
 const compareScoreDesc: TSortingFunction = (playerA, playerB) => {
@@ -30,7 +31,9 @@ const sortingOptions: TSortingOptions = {
   scoreDesc: compareScoreDesc,
 };
 
-export default function ScoreBoard() {
+interface IProps extends TMatch {}
+
+export default function ScoreBoard(props: IProps) {
   const [sortBy, setSortBy] = useState("scoreDesc");
   const [players, setPlayers] = useState<TPlayer[]>([]);
 
