@@ -35,3 +35,23 @@
 - [] callback prop maken: addPlayer
 - [] onSubmit -> callback prop addPlayer aanroepen -> naam
 - [] logica schrijven om de speler toe te voegen
+
+## Feature Request: We want to keep track of multiple matches
+
+- [] Entity -> TTournament ->
+- [] Component -> Tournament
+- [] State in Tournament component
+- [] Verschillende scoreboard weergeven
+- [] Callback props incrementScore & addPlayer aanpassen
+
+```
+[{
+    matchId: number,
+    players: [{ id: number, name: string, score: number}]
+},
+{
+    matchId: number,
+    players: [{ id: number, name: string, score: number}]
+}
+]
+```
