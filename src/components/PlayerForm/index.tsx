@@ -5,7 +5,8 @@ type TProps = {
 };
 
 export default function PlayerForm(props: TProps) {
-  const [name, setName] = useState("");
+  const initialState = localStorage.getItem("name") || "";
+  const [name, setName] = useState(initialState);
 
   return (
     <div className="AddPlayerForm">
@@ -15,6 +16,7 @@ export default function PlayerForm(props: TProps) {
           type="text"
           placeholder="Name"
           onChange={(event) => {
+            localStorage.setItem("name", event.target.value);
             setName(event.target.value);
           }}
           value={name}
@@ -24,6 +26,7 @@ export default function PlayerForm(props: TProps) {
             console.log("ADD PLAYER", name);
             props.addPlayer(name);
             setName("");
+            localStorage.setItem("name", "");
           }}
         >
           Add player
