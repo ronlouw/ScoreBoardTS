@@ -3,6 +3,8 @@ import Player from "../Player";
 import { TPlayer, TSortingFunction } from "../../entities/Player";
 import { TMatch } from "../../entities/Match";
 import PlayerForm from "../PlayerForm";
+import { selectPlayersByMatchId } from "../../store/matches/selectors";
+import { useSelector } from "react-redux";
 
 const compareScoreDesc: TSortingFunction = (playerA, playerB) => {
   return playerB.score - playerA.score;
@@ -31,15 +33,16 @@ const sortingOptions: TSortingOptions = {
   scoreDesc: compareScoreDesc,
 };
 
-interface IProps extends TMatch {
-  incrementScore: (matchId: number, playerId: number) => void;
-}
+type TProps = {
+  matchId: number;
+};
 
-export default function ScoreBoard(props: IProps) {
+export default function ScoreBoard(props: TProps) {
   const [sortBy, setSortBy] = useState("scoreDesc");
   // const [players, setPlayers] = useState<TPlayer[]>([]);
+  const players = useSelector(selectPlayersByMatchId(props.matchId));
 
-  const sortedPlayers = [...props.players].sort(sortingOptions[sortBy]);
+  const sortedPlayers = [...players].sort(sortingOptions[sortBy]);
 
   return (
     <div>
@@ -60,12 +63,7 @@ export default function ScoreBoard(props: IProps) {
       </p>
       <div>
         {sortedPlayers.map((player) => (
-          <Player
-            matchId={props.id}
-            key={player.id}
-            {...player}
-            incrementScore={props.incrementScore}
-          />
+          <Player matchId={props.matchId} key={player.id} {...player} />
         ))}
       </div>
     </div>

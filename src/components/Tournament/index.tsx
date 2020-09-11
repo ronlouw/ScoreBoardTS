@@ -62,15 +62,8 @@ export default function Tournament() {
   return (
     <div>
       <button onClick={merge}>MERGE MATCHES</button>
-      {matches.map((match) => {
-        return (
-          <ScoreBoard
-            key={match.id}
-            id={match.id}
-            players={match.players}
-            incrementScore={incrementScore}
-          />
-        );
+      {matchIds.map((matchId) => {
+        return <ScoreBoard key={matchId} matchId={matchId} />;
       })}
     </div>
   );
