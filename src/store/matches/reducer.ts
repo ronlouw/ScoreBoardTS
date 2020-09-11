@@ -21,7 +21,14 @@ const initialState = [
 // reducer moet altijd een state returnen
 export default function matchesReducer(
   state: TMatch[] = initialState,
-  action: {} = {}
+  action: { type: string | null } = { type: null }
 ) {
-  return state;
+  switch (action.type) {
+    case "CREATE_MATCH":
+      const newMatch = { id: state.length + 1, players: [] };
+      return [...state, newMatch];
+
+    default:
+      return state;
+  }
 }
