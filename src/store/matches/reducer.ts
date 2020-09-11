@@ -1,4 +1,5 @@
 import { TMatch } from "../../entities/Match";
+import { CREATE_MATCH, TMatchActionTypes } from "./actions";
 
 const initialState = [
   {
@@ -21,10 +22,10 @@ const initialState = [
 // reducer moet altijd een state returnen
 export default function matchesReducer(
   state: TMatch[] = initialState,
-  action: { type: string | null } = { type: null }
+  action: TMatchActionTypes | { type: null } = { type: null }
 ) {
   switch (action.type) {
-    case "CREATE_MATCH":
+    case CREATE_MATCH:
       const newMatch = { id: state.length + 1, players: [] };
       return [...state, newMatch];
 
