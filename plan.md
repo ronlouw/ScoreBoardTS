@@ -68,3 +68,11 @@
 - Testen: doen devtools
 
 - [] Define entities, type the state
+
+## We want to create a new match
+
+- [x] UI -> knopje: Create Match
+- [x] Event listener / handler
+- [x] Action maken -> Object met en `type` en optioneel een `payload`
+- [x] Actie dispatchen naar de store
+- [] Actie afhandelen in de reducer

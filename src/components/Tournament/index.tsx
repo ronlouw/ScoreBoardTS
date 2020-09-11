@@ -3,11 +3,12 @@ import ScoreBoard from "../ScoreBoard";
 import { TTournament } from "../../entities/Tournament";
 import { TPlayer } from "../../entities/Player";
 import { selectMatchIds } from "../../store/matches/selectors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Tournament() {
   const [matches, setMatches] = useState<TTournament>([]);
   const matchIds = useSelector(selectMatchIds);
+  const dispatch = useDispatch();
   console.log("MATCH IDS!", matchIds);
 
   function incrementScore(matchId: number, playerId: number) {
@@ -59,8 +60,14 @@ export default function Tournament() {
     setMatches(mergedMatches);
   }
 
+  function createMatch() {
+    const action = { type: "CREATE_MATCH" };
+    dispatch(action);
+  }
+
   return (
     <div>
+      <button onClick={createMatch}>Create Match</button>
       <button onClick={merge}>MERGE MATCHES</button>
       {matchIds.map((matchId) => {
         return <ScoreBoard key={matchId} matchId={matchId} />;
