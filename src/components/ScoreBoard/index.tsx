@@ -46,7 +46,7 @@ export default function ScoreBoard(props: TProps) {
   return (
     <div>
       Scoreboard
-      {/* <PlayerForm addPlayer={addPlayer} /> */}
+      <PlayerForm />
       <p>
         <select
           onChange={(event) => {

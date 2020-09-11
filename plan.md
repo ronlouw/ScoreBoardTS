@@ -84,6 +84,12 @@
 
 ## AddPlayer
 
+- [x] UI -> form & knopje: AddPlayer
+- [x] Event listener / handler
+- [] Action maken -> Object met en `type` en optioneel een `payload`: naam, matchId
+- [] Actie dispatchen naar de store
+- [] Actie afhandelen in de reducer
+
 ## Increment Score
 
 ## Diy:

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 
-type TProps = {
-  addPlayer: (name: string) => void;
-};
+type TProps = {};
 
 export default function PlayerForm(props: TProps) {
-  const initialState = localStorage.getItem("name") || "";
+  const initialState = "";
   const [name, setName] = useState(initialState);
 
   return (
@@ -16,7 +14,6 @@ export default function PlayerForm(props: TProps) {
           type="text"
           placeholder="Name"
           onChange={(event) => {
-            localStorage.setItem("name", event.target.value);
             setName(event.target.value);
           }}
           value={name}
@@ -24,9 +21,7 @@ export default function PlayerForm(props: TProps) {
         <button
           onClick={() => {
             console.log("ADD PLAYER", name);
-            props.addPlayer(name);
             setName("");
-            localStorage.setItem("name", "");
           }}
         >
           Add player
