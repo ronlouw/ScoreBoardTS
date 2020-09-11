@@ -55,3 +55,14 @@
 }
 ]
 ```
+
+## We want to use Redux so we can rid of callback props!
+
+- [] Setup
+  - Create a Store
+    - `rootReducer` -> alle reducers, samengevoegd
+    - reducer voor een deel van de state (Matches)
+    - Redux Devtools installeren
+    - optioneel: middlewares
+  - App `wrappen` in een Provider component
+- Testen: doen devtools
