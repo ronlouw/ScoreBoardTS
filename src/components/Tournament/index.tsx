@@ -11,25 +11,25 @@ export default function Tournament() {
   const dispatch = useDispatch();
   console.log("MATCH IDS!", matchIds);
 
-  function incrementScore(matchId: number, playerId: number) {
-    const updatedMatches = matches.map((match) => {
-      if (match.id === matchId) {
-        const updatedPlayers = match.players.map((player) => {
-          if (player.id === playerId) {
-            return { ...player, score: player.score + 1 };
-          } else {
-            return player;
-          }
-        });
+  // function incrementScore(matchId: number, playerId: number) {
+  //   const updatedMatches = matches.map((match) => {
+  //     if (match.id === matchId) {
+  //       const updatedPlayers = match.players.map((player) => {
+  //         if (player.id === playerId) {
+  //           return { ...player, score: player.score + 1 };
+  //         } else {
+  //           return player;
+  //         }
+  //       });
 
-        return { ...match, players: updatedPlayers };
-      } else {
-        return match;
-      }
-    });
+  //       return { ...match, players: updatedPlayers };
+  //     } else {
+  //       return match;
+  //     }
+  //   });
 
-    setMatches(updatedMatches);
-  }
+  //   setMatches(updatedMatches);
+  // }
 
   // function reset() {
   //   const updatedPlayers = players.map((player) => {

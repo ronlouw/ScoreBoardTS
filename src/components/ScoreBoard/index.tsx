@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Player from "../Player";
-import { TPlayer, TSortingFunction } from "../../entities/Player";
-import { TMatch } from "../../entities/Match";
+import { TSortingFunction } from "../../entities/Player";
 import PlayerForm from "../PlayerForm";
 import { selectPlayersByMatchId } from "../../store/matches/selectors";
 import { useSelector } from "react-redux";
