@@ -86,11 +86,17 @@
 
 - [x] UI -> form & knopje: AddPlayer
 - [x] Event listener / handler
-- [] Action maken -> Object met en `type` en optioneel een `payload`: naam, matchId
-- [] Actie dispatchen naar de store
-- [] Actie afhandelen in de reducer
+- [x] Action maken -> Object met en `type` en optioneel een `payload`: naam, matchId
+- [x] Actie dispatchen naar de store
+- [x] Actie afhandelen in de reducer
 
 ## Increment Score
+
+- [x] UI -> knopje
+- [x] Event listener / handler
+- [] Action maken -> Object met en `type` en optioneel een `payload`: playerId, matchId
+- [] Actie dispatchen naar de store
+- [] Actie afhandelen in de reducer
 
 ## Diy:
 
