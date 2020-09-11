@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import ScoreBoard from "../ScoreBoard";
 import { TTournament } from "../../entities/Tournament";
 import { TPlayer } from "../../entities/Player";
+import { selectMatchIds } from "../../store/matches/selectors";
+import { useSelector } from "react-redux";
 
 export default function Tournament() {
   const [matches, setMatches] = useState<TTournament>([]);
+  const matchIds = useSelector(selectMatchIds);
+  console.log("MATCH IDS!", matchIds);
 
   function incrementScore(matchId: number, playerId: number) {
     const updatedMatches = matches.map((match) => {
