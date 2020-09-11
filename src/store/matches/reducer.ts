@@ -3,6 +3,8 @@ import {
   CREATE_MATCH,
   ADD_PLAYER,
   INCREMENT_SCORE,
+  DECREMENT_SCORE,
+  INCREMENTSUPER_SCORE,
   TMatchActionTypes,
 } from "./actions";
 
@@ -27,7 +29,7 @@ const initialState = [
 // reducer moet altijd een state returnen
 export default function matchesReducer(
   state: TMatch[] = initialState,
-  action: TMatchActionTypes | { type: null } = { type: null }
+  action: TMatchActionTypes | { type: null } = { type: null },
 ) {
   switch (action.type) {
     case CREATE_MATCH:
@@ -59,6 +61,29 @@ export default function matchesReducer(
             players: match.players.map((player) => {
               if (player.id === action.payload.playerId) {
                 return { ...player, score: player.score + 1 };
+              }
+
+              return player;
+            }),
+          };
+
+          return updatedMatch;
+        }
+
+        return match;
+      });
+
+      return updatedMatches;
+    }
+
+    case DECREMENT_SCORE: {
+      const updatedMatches = state.map((match) => {
+        if (match.id === action.payload.matchId) {
+          const updatedMatch = {
+            ...match,
+            players: match.players.map((player) => {
+              if (player.id === action.payload.playerId) {
+                return { ...player, score: player.score - 1 };
               }
 
               return player;

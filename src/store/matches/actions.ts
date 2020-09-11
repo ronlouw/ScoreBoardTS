@@ -1,9 +1,27 @@
 export const CREATE_MATCH = "CREATE_MATCH";
 export const ADD_PLAYER = "ADD_PLAYER";
 export const INCREMENT_SCORE = "INCREMENT_SCORE";
+export const DECREMENT_SCORE = "DECREMENT_SCORE";
+export const INCREMENTSUPER_SCORE = "INCREMENTSUPER_SCORE";
 
 type TCreateMatchAction = {
   type: typeof CREATE_MATCH;
+};
+
+type TIncrementSuperScore = {
+  type: typeof INCREMENTSUPER_SCORE;
+  payload: {
+    playerId: number;
+    matchId: number;
+  };
+};
+
+type TDecrementScore = {
+  type: typeof DECREMENT_SCORE;
+  payload: {
+    playerId: number;
+    matchId: number;
+  };
 };
 
 type TIncrementScore = {
@@ -25,7 +43,8 @@ type TAddPlayerAction = {
 export type TMatchActionTypes =
   | TCreateMatchAction
   | TAddPlayerAction
-  | TIncrementScore;
+  | TIncrementScore
+  | TDecrementScore;
 
 // Action Creator
 export function createMatch(): TCreateMatchAction {
@@ -46,7 +65,7 @@ export function addPlayer(name: string, matchId: number): TAddPlayerAction {
 
 export function incrementScore(
   playerId: number,
-  matchId: number
+  matchId: number,
 ): TIncrementScore {
   return {
     type: INCREMENT_SCORE,
@@ -57,21 +76,28 @@ export function incrementScore(
   };
 }
 
-// Inspiration from the docs:
+export function decrementScore(
+  playerId: number,
+  matchId: number,
+): TDecrementScore {
+  return {
+    type: DECREMENT_SCORE,
+    payload: {
+      matchId,
+      playerId,
+    },
+  };
+}
 
-// export const SEND_MESSAGE = 'SEND_MESSAGE'
-// export const DELETE_MESSAGE = 'DELETE_MESSAGE'
-
-// interface SendMessageAction {
-//   type: typeof SEND_MESSAGE
-//   payload: Message
-// }
-
-// interface DeleteMessageAction {
-//   type: typeof DELETE_MESSAGE
-//   meta: {
-//     timestamp: number
-//   }
-// }
-
-// export type ChatActionTypes = SendMessageAction | DeleteMessageAction
+export function incrementSuperScore(
+  playerId: number,
+  matchId: number,
+): TIncrementSuperScore {
+  return {
+    type: INCREMENTSUPER_SCORE,
+    payload: {
+      matchId,
+      playerId,
+    },
+  };
+}
