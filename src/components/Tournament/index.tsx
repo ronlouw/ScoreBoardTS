@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import ScoreBoard from "../ScoreBoard";
 import { TTournament } from "../../entities/Tournament";
+import { TPlayer } from "../../entities/Player";
 
 export default function Tournament() {
   const [matches, setMatches] = useState<TTournament>([
     {
       id: 1,
-      players: [{ id: 1, name: "Kelley", score: 0 }],
+      players: [{ id: 1, name: "Kelley", score: 3 }],
     },
     {
       id: 2,
-      players: [],
+      players: [{ id: 2, name: "Rein", score: 2 }],
     },
     {
       id: 3,
-      players: [],
+      players: [{ id: 3, name: "Violeta", score: 3 }],
     },
   ]);
 
@@ -53,8 +54,23 @@ export default function Tournament() {
   //   setPlayers(updatedPlayers);
   // }
 
+  function merge() {
+    const accumulator: TPlayer[] = [];
+    const allPlayers = matches.reduce((allPlayers, match) => {
+      if (match.players.length === 0) {
+        return allPlayers;
+      }
+      return [...allPlayers, ...match.players];
+    }, accumulator);
+
+    const mergedMatches: TTournament = [{ id: 1, players: allPlayers }];
+
+    setMatches(mergedMatches);
+  }
+
   return (
     <div>
+      <button onClick={merge}>MERGE MATCHES</button>
       {matches.map((match) => {
         return (
           <ScoreBoard
