@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Player from "../Player";
-import { TPlayer, TSortingFunction } from "../../entities/Player";
+import { TSortingFunction } from "../../entities/Player";
 import PlayerForm from "../PlayerForm";
+import { selectPlayersByMatchId } from "../../store/matches/selectors";
+import { useSelector } from "react-redux";
 
 const compareScoreDesc: TSortingFunction = (playerA, playerB) => {
   return playerB.score - playerA.score;
@@ -30,48 +32,20 @@ const sortingOptions: TSortingOptions = {
   scoreDesc: compareScoreDesc,
 };
 
-export default function ScoreBoard() {
+type TProps = {
+  matchId: number;
+};
+
+export default function ScoreBoard(props: TProps) {
   const [sortBy, setSortBy] = useState("scoreDesc");
-  const [players, setPlayers] = useState<TPlayer[]>([
-    { id: 1, name: "Violeta", score: 11 },
-    { id: 2, name: "Eszter", score: 14 },
-    { id: 3, name: "Jeroen v2", score: 4 },
-    { id: 4, name: "Lisa", score: 42 },
-  ]);
+  const players = useSelector(selectPlayersByMatchId(props.matchId));
 
   const sortedPlayers = [...players].sort(sortingOptions[sortBy]);
-
-  function incrementScore(playerId: number) {
-    const updatedPlayers = players.map((player) => {
-      if (player.id === playerId) {
-        return { ...player, score: player.score + 1 };
-      } else {
-        return player;
-      }
-    });
-
-    setPlayers(updatedPlayers);
-  }
-
-  function reset() {
-    const updatedPlayers = players.map((player) => {
-      return { ...player, score: 0 };
-    });
-
-    setPlayers(updatedPlayers);
-  }
-
-  function addPlayer(name: string) {
-    const newPlayer = { id: players.length + 1, name: name, score: 0 };
-    console.log("NEW:", newPlayer);
-    const updatedPlayers = [...players, newPlayer];
-    setPlayers(updatedPlayers);
-  }
 
   return (
     <div>
       Scoreboard
-      <PlayerForm addPlayer={addPlayer} />
+      <PlayerForm matchId={props.matchId} />
       <p>
         <select
           onChange={(event) => {
@@ -83,11 +57,10 @@ export default function ScoreBoard() {
           <option value="scoreAsc">Sort by score ASC</option>
           <option value="scoreDesc">Sort by score DESC</option>
         </select>
-        <button onClick={reset}>reset</button>
       </p>
       <div>
         {sortedPlayers.map((player) => (
-          <Player key={player.id} {...player} incrementScore={incrementScore} />
+          <Player matchId={props.matchId} key={player.id} {...player} />
         ))}
       </div>
     </div>

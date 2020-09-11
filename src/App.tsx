@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import ScoreBoard from "./components/ScoreBoard";
+import Tournament from "./components/Tournament";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <ScoreBoard />
+        <Tournament />
       </header>
     </div>
   );

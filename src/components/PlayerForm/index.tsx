@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { addPlayer } from "../../store/matches/actions";
+import { useDispatch } from "react-redux";
 
 type TProps = {
-  addPlayer: (name: string) => void;
+  matchId: number;
 };
 
 export default function PlayerForm(props: TProps) {
-  const initialState = localStorage.getItem("name") || "";
+  const initialState = "";
   const [name, setName] = useState(initialState);
+  const dispatch = useDispatch();
 
   return (
     <div className="AddPlayerForm">
@@ -16,17 +19,14 @@ export default function PlayerForm(props: TProps) {
           type="text"
           placeholder="Name"
           onChange={(event) => {
-            localStorage.setItem("name", event.target.value);
             setName(event.target.value);
           }}
           value={name}
         />{" "}
         <button
           onClick={() => {
-            console.log("ADD PLAYER", name);
-            props.addPlayer(name);
+            dispatch(addPlayer(name, props.matchId));
             setName("");
-            localStorage.setItem("name", "");
           }}
         >
           Add player

@@ -1,13 +1,17 @@
 import React from "react";
 import { TPlayer } from "../../entities/Player";
+import { incrementScore } from "../../store/matches/actions";
+import { useDispatch } from "react-redux";
 
 interface Props extends TPlayer {
-  incrementScore: (playerId: number) => void;
+  matchId: number;
 }
 
 export default function Player(props: Props) {
+  const dispatch = useDispatch();
+
   function handleClick() {
-    props.incrementScore(props.id);
+    dispatch(incrementScore(props.id, props.matchId));
   }
 
   return (
