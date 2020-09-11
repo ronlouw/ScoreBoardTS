@@ -11,8 +11,7 @@ export default function Player(props: Props) {
   const dispatch = useDispatch();
 
   function handleClick() {
-    const action = incrementScore(props.id, props.matchId);
-    dispatch(action);
+    dispatch(incrementScore(props.id, props.matchId));
   }
 
   return (

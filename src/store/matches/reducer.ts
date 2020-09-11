@@ -1,5 +1,10 @@
 import { TMatch } from "../../entities/Match";
-import { CREATE_MATCH, ADD_PLAYER, TMatchActionTypes } from "./actions";
+import {
+  CREATE_MATCH,
+  ADD_PLAYER,
+  INCREMENT_SCORE,
+  TMatchActionTypes,
+} from "./actions";
 
 const initialState = [
   {
@@ -38,6 +43,29 @@ export default function matchesReducer(
             score: 0,
           };
           return { ...match, players: [...match.players, newPlayer] };
+        }
+
+        return match;
+      });
+
+      return updatedMatches;
+    }
+
+    case INCREMENT_SCORE: {
+      const updatedMatches = state.map((match) => {
+        if (match.id === action.payload.matchId) {
+          const updatedMatch = {
+            ...match,
+            players: match.players.map((player) => {
+              if (player.id === action.payload.playerId) {
+                return { ...player, score: player.score + 1 };
+              }
+
+              return player;
+            }),
+          };
+
+          return updatedMatch;
         }
 
         return match;
