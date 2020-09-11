@@ -4,7 +4,6 @@ import {
   ADD_PLAYER,
   INCREMENT_SCORE,
   DECREMENT_SCORE,
-  INCREMENTSUPER_SCORE,
   TMatchActionTypes,
 } from "./actions";
 
