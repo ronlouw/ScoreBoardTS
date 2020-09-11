@@ -25,9 +25,6 @@ export default function PlayerForm(props: TProps) {
         />{" "}
         <button
           onClick={() => {
-            console.log("ADD PLAYER", name);
-            // const action = addPlayer(name, props.matchId);
-            // dispatch(action);
             dispatch(addPlayer(name, props.matchId));
             setName("");
           }}

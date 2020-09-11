@@ -38,7 +38,6 @@ type TProps = {
 
 export default function ScoreBoard(props: TProps) {
   const [sortBy, setSortBy] = useState("scoreDesc");
-  // const [players, setPlayers] = useState<TPlayer[]>([]);
   const players = useSelector(selectPlayersByMatchId(props.matchId));
 
   const sortedPlayers = [...players].sort(sortingOptions[sortBy]);
@@ -58,7 +57,6 @@ export default function ScoreBoard(props: TProps) {
           <option value="scoreAsc">Sort by score ASC</option>
           <option value="scoreDesc">Sort by score DESC</option>
         </select>
-        {/* <button onClick={reset}>reset</button> */}
       </p>
       <div>
         {sortedPlayers.map((player) => (
