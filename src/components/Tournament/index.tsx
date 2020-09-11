@@ -4,20 +4,7 @@ import { TTournament } from "../../entities/Tournament";
 import { TPlayer } from "../../entities/Player";
 
 export default function Tournament() {
-  const [matches, setMatches] = useState<TTournament>([
-    {
-      id: 1,
-      players: [{ id: 1, name: "Kelley", score: 3 }],
-    },
-    {
-      id: 2,
-      players: [{ id: 2, name: "Rein", score: 2 }],
-    },
-    {
-      id: 3,
-      players: [{ id: 3, name: "Violeta", score: 3 }],
-    },
-  ]);
+  const [matches, setMatches] = useState<TTournament>([]);
 
   function incrementScore(matchId: number, playerId: number) {
     const updatedMatches = matches.map((match) => {
